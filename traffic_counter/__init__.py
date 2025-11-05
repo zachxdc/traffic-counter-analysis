@@ -1,6 +1,5 @@
 from .analysis import (
     TrafficRecord,
-    TrafficWindow,
     daily_totals,
     load_records,
     lowest_traffic_window,

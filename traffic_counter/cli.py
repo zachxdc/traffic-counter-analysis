@@ -27,7 +27,14 @@ def main(argv=None):
     )
     args = parser.parse_args(argv)
 
-    records = load_records(args.file)
+    try:
+        records = load_records(args.file)
+    except FileNotFoundError:
+        print(f"Error: File not found: {args.file}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Error reading file: {e}", file=sys.stderr)
+        return 1
 
     print(f"Total {total_cars(records)}")
     for record_date, count in daily_totals(records):
@@ -40,13 +47,12 @@ def main(argv=None):
 
     try:
         lowest_window = lowest_traffic_window(records, args.window)
+        start_time = lowest_window[0].timestamp
+        total = sum(record.count for record in lowest_window)
+        print("Lowest traffic window:")
+        print(f"Start {start_time.isoformat()} Total {total}")
     except ValueError:
         print("No low-traffic window available")
-    else:
-        print("Lowest traffic window:")
-        print(f"Start {lowest_window.start.isoformat()} Total {lowest_window.total}")
-        for record in lowest_window.records:
-            print(f"  {record.timestamp.isoformat()} {record.count}")
 
     return 0
 
