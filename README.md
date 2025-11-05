@@ -1,10 +1,10 @@
 # Traffic Counter Analysis
 
-A Python program to analyze traffic counter data. The program reads files containing timestamped vehicle counts (recorded every half-hour) and provides statistical analysis.
+A Python program to analyse traffic counter data. The program reads files containing timestamped vehicle counts (recorded every half-hour) and provides statistical analysis.
 
 ## Features
 
-The program analyzes traffic counter output files and provides:
+The program analyses traffic counter output files and provides:
 
 - **Total cars**: The total number of cars seen across all records
 - **Daily totals**: Number of cars seen per day (in `yyyy-mm-dd` format)

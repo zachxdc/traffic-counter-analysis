@@ -10,7 +10,7 @@ from .analysis import (
 )
 
 
-def main(argv=None):
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="Analyse traffic counter output files")
     parser.add_argument("file", help="Path to the traffic counter data file")
     parser.add_argument(

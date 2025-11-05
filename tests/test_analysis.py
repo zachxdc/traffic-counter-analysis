@@ -71,4 +71,3 @@ def test_lowest_traffic_window_requires_enough_records():
     ]
     with pytest.raises(ValueError):
         lowest_traffic_window(records, window_size=3)
-
